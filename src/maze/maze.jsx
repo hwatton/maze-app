@@ -140,15 +140,23 @@ function Maze() {
         </div>
         <div className="mazeControl">
           <div style={{ 
-            marginRight: "10px", 
-            fontSize: Math.max(svgSize/22, 12) +"px", 
+            justifyContent: "center",
+            marginRight: "30px", 
             display: "flex",
-            lineHeight: "2px"}}>
-            <p>Maze size:</p>
+            lineHeight: "10px"}}>
+
+              { winWid >500 ? (<h3>{"Maze size: " + mazeObject.size}</h3>):(
+                <h4>{"Size: " + mazeObject.size}</h4>
+              )}
+            
             
             <input
               className="numberInput"
-              type="number"
+              style={{
+                width: winWid >500 ? "90px" : "60px",
+                marginLeft: "20px"
+              }}
+              type="range"
               step="1"
               value={mazeObject.size}
               min="2"
