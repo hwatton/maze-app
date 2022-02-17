@@ -193,11 +193,7 @@ function Maze() {
             margin={30}
           />
 
-          <div className="creditBit" style={{ width: svgSize - 100 }}>
-            <p>
-              maze created at <a href="/maze">harrywatton.com</a>
-            </p>
-          </div>
+          
         </div>
         <div style={{ display: "none", textAlign: "center", width: "540px" }}>
           <div className="mazeHidden" ref={componentRef}>
