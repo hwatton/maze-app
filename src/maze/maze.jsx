@@ -3,7 +3,7 @@ import "./mazeStyle.css";
 import useWindowDimensions from "../windowSizeHook.js";
 import { useReactToPrint } from "react-to-print";
 import { printerPath } from "./pathSvg";
-
+import { ReactComponent as Redo} from "./Ei-redo.svg"
 import RainbowAsterisks from "./rainbowAsterisks";
 import mazeFunction from "./mazeFunctionPathless.js";
 import MazeFromData from "./mazeFromData.jsx";
@@ -72,7 +72,7 @@ function Maze() {
 
   if (winWid < 499) {
     setTimeout(() => {
-      setSvgSize(winWid * 0.9);
+      setSvgSize(320 + (winWid-320)*0.9);
     }, 1000);
   } else {
     if (winWid > 750) {
@@ -139,9 +139,13 @@ function Maze() {
           )}
         </div>
         <div className="mazeControl">
-          <p style={{ marginRight: "10px", fontSize: "18px" }}>
-            {" "}
-            Maze size:
+          <div style={{ 
+            marginRight: "10px", 
+            fontSize: Math.max(svgSize/22, 12) +"px", 
+            display: "flex",
+            lineHeight: "2px"}}>
+            <p>Maze size:</p>
+            
             <input
               className="numberInput"
               type="number"
@@ -153,25 +157,27 @@ function Maze() {
                 handleNumber(e.target.value);
               }}
             />
-          </p>
+          </div>
           <button
             className="enterButton"
             onClick={() => {
               handleVersionUpdate();
             }}
           >
-            new maze
+            <Redo/>
           </button>
           <button onClick={handlePrint} className="printButton">
             <svg
-              viewBox={"0 0 130 130"}
+              viewBox={"0 0 180 180"}
               preserveAspectRatio={"xMinYMin meet"}
-              width={50}
+              width={30}
             >
               <path
                 style={{
                   fill: "white",
-                  transform: "translate(4px, 10px)"
+                  transform: "translate(0px, 25px)",
+                  stroke: "white",
+                  strokeWidth: "2px"
                 }}
                 d={printerPath}
               />
