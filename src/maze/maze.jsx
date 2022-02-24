@@ -9,42 +9,9 @@ import mazeFunction from "./mazeFunctionPathless.js";
 import MazeFromData from "./mazeFromData.jsx";
 
 function Maze() {
-  /**
-   * problem:
-   * the print button renders a new instance of the maze, so it lays out differntly.
-   * to fix: call mazedata() in a useEffect here and pass the data to
-   * two instances of mazegrid, whihc will render the same maze, but with
-   * slightly different styling/scaling.
-   * BUT, first re write the Maze grid component to accept this
-   * and resize/scale with CSS and viewbox, instead of fixed withd/height
-   * (the problem is that i'd have to give different values to mazedata
-   * as it currently stands. Mazedata should just return some coordinates,
-   * with all the strokewidths and other style attributes being supplied as props,
-   * depending on the size of the main app, given by useWindowDimensions)
-   *
-   *
-   *
-   * aaaaalso. the background (although faster now) rerenders
-   * every time. it's all in the wrong place.
-   * sort it aaaaaaaaaht.
-   * since no browserRouter, just put it all together,
-   * bit by bit in app.js, or relocate someof the below into it's
-   * own components. split it up baby.
-   *
-   *
-   * basically, this component needs to get all the data
-   * and the ask everythign else to just do it's thing
-   * when their props change.
-   */
-
+ 
   const [thisMaze, setThisMaze] = useState(mazeFunction(5));
 
-  /*right ^ this works lovely. simpler. get rid of old components
-  and put the data / inputs into a state object.
-
-  then, turn svgbackground into a wrapper, so it doesn't rerender the whole
-  god damn time.
-  */
 
   const handleVersionUpdate = () => {
     let obj = { ...mazeObject };
